@@ -8,6 +8,14 @@ const SECRET_KEY = 'your_secret_key';
 
 app.use(bodyParser.json());
 
+// Middleware to enable CORS
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://your-next-js-app.com'); // Replace with your Next.js app's domain
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 // Dummy user data (replace this with a real user database)
 const users = [
   { id: 1, username: 'user1', password: 'password1' },
